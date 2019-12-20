@@ -8,11 +8,62 @@
 
 <h1>All Events</h1>
 
+<!--<table>-->
+<!--    <tr><td>Row No</td><td>Status</td><td>Message</td></tr>-->
+<!--    <th:block th:each="row : ${reportMap}">-->
+<!--        <tr>-->
+<!--            <td th:text="${row.key}">Row No</td>-->
+<!--            <td th:text="${#strings.listSplit(row.value,'-')[0]}">Status</td>-->
+<!--            <td th:text="${#strings.listSplit(row.value,'-')[1]}">Message</td>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+
+<!--<table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Description</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+
+
+<!--    <tr th:each= "event : ${eventMap}">-->
+<!--        <td th:text= "${event.key}"></td>-->
+<!--        <td th:text= "${event.value}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--<tr th:each="message : ${messages}">-->
+<!--<td th:text="${message.id}">1</td>-->
+<!--<td><a href="#" th:text="${message.title}">Title ...</a></td>-->
+<!--<td th:text="${message.text}">Text ...</td>-->
+<!--</tr>-->
+
 <ul>
-    <th:block th:each="event : ${events}">
-        <li th:text="${event}"></li>
+    <th:block th:each="event : ${eventMap}">
+        <li th:text="${eventNames}"></li>
+<!--        <li th:text="${eventDescriptions}"></li>-->
     </th:block>
 </ul>
+
+<div th:each="event: ${eventMap}">
+    <p th:text="${event.key}">No Id!</p>
+    <p th:text="${event.value}">No Name!</p>
+</div>
+
+<!--<ul>-->
+<!--    <th:block th:each="event : ${eventMap}">-->
+<!--        <li th:text="${eventNames}"></li>-->
+<!--        <li th:text="${eventDescriptions}"></li>-->
+<!--    </th:block>-->
+<!--</ul>-->
+
+<!--<ul>-->
+<!--    <li th:each="entry: ${map}">-->
+<!--        <span th:text="${entry.key}"></span> = <span th:text="${entry.value}"></span>-->
+<!--    </li>-->
+<!--</ul>-->
 
 </body>
 </html>
