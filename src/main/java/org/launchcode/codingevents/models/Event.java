@@ -1,5 +1,8 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -8,9 +11,14 @@ import java.util.Objects;
 /**
  * Created by Chris Bay
  */
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
+
+    // now that DB is making key, we don't need a next id or a need to increment it in the constructor.
     private static int nextId = 1;
 
     @NotBlank(message = "Name is required")
@@ -27,17 +35,23 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String contactEmail, EventType type) {
-        this();
+        // no longer need to call first constructor now that it is a true no-arg constructor.
+        // don't forget how to do this, you made need it n future to call other things that a
+        // perhaps a program might set from another handler or form (like email or cc).
+        //this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
     }
 
-    public Event() {
-        this.id = nextId;
-        nextId++;
-    }
+    public Event() {}
+        // As above, we don't need to increment as DB will now do this.
+        //this.id = nextId;
+        //nextId++;
+        //if we were using this it would have to be inside the curly bracket
+        // I am moving bracket above so you can see that it is now a no-arg constructor.
+        // }
 
     public String getName() {
         return name;
