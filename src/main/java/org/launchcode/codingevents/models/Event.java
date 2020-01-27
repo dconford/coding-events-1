@@ -30,30 +30,30 @@ public class Event extends AbstractEntity {
     @NotNull(message = "Category is required")
     private EventCategory eventCategory;
 
+    //Add a field to collect information about where the event will take place. This field should not be null or blank.
+    @NotBlank(message = "Location is required! Please enter Event Location.")
+    @Size(min = 2, max = 256, message = "Location Description should be between 2 and 256 characters.")
+    private String eventLocation;
+
+    //Add a field to collect information about whether an attendee must register for the event or not.
+    // For the purposes of validation practice, make this field only able to be marked as true.
+    @AssertTrue(message = "Registration is Mandatory!")
+    private Boolean registrationRequired;
+
+    //Add a field to collect information about the number of attendees for the event.
+    // Valid values for this field should be any number over zero.
+    @NotNull(message = "Must be at least 1 attending.")
+    @Min(value = 1, message = "minimum of 1. Event creator must commit to attending event.")
+    private Integer numberAttending;
+
+    public Event() {}
+
     public Event(String name, String description, String contactEmail, EventCategory eventCategory) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.eventCategory = eventCategory;
     }
-        //Add a field to collect information about where the event will take place. This field should not be null or blank.
-        @NotBlank(message = "Location is required! Please enter Event Location.")
-        @Size(min = 2, max = 256, message = "Location Description should be between 2 and 256 characters.")
-        private String eventLocation;
-
-        //Add a field to collect information about whether an attendee must register for the event or not.
-        // For the purposes of validation practice, make this field only able to be marked as true.
-        @AssertTrue(message = "Registration is Mandatory!")
-        private Boolean registrationRequired;
-
-        //Add a field to collect information about the number of attendees for the event.
-        // Valid values for this field should be any number over zero.
-        @NotNull(message = "Must be at least 1 attending.")
-        @Min(value = 1, message = "minimum of 1. Event creator must commit to attending event.")
-        private Integer numberAttending;
-
-
-    public Event() {}
 
     public String getName() {
         return name;
